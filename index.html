@@ -291,27 +291,27 @@ function findLeftoverIdeas(){
  let ideas=[];
  if(items.length>=2 && has('spaghetti','pasta') && has('steak','beef')){
    title='🍝🥩 Leftover Power Combo!';
-   message=pick(['🦝💗 YES. These leftovers actually belong together. I approve this delicious team-up. 😂','🦖✨ Ohhh, this is a GOOD one. Lil Dino officially approves this leftover alliance!','🦖🍝🥩 Look at you making smart leftover decisions. This combo has serious potential!']);
+   message=pick(['🦝💗 YES. These leftovers actually belong together. I approve this delicious team-up. 😂','🦝✨ Ohhh, this is a GOOD one. Lil Dino officially approves this leftover alliance!','🦝🍝🥩 Look at you making smart leftover decisions. This combo has serious potential!']);
    ideas=['Slice the steak and toss it with the spaghetti for a hearty steak pasta','Warm everything with marinara or garlic butter and add Parmesan','Add sautéed peppers, onions, or spinach for a complete skillet meal'];
  }else if(items.length>=2 && ((has('pizza')&&has('potato soup'))||(has('pizza')&&has('soup')))){
    title='🍕🥣 Umm... About This Combo';
-   message=pick(['🦝🚨 I support leftovers. I support creativity. But pizza + potato soup? Bestie... even I have dinosaur limits. 😂','🦖😳 Okay... I have questions. Pizza and potato soup? That is a bold choice, adventurer.','🦖🙅‍♂️ Lil Dino has reviewed this combination and would like to file a polite food objection. 😂']);
+   message=pick(['🦝🚨 I support leftovers. I support creativity. But pizza + potato soup? Bestie... even I have dinosaur limits. 😂','🦝😳 Okay... I have questions. Pizza and potato soup? That is a bold choice, adventurer.','🦝🙅‍♂️ Rook has reviewed this combination and would like to file a polite food objection. 😂']);
    ideas=['Keep them separate and give each one a makeover','Turn the potato soup into a creamy side and crisp the pizza in a skillet or oven','If you are feeling brave, use a small amount of the pizza toppings in the soup instead of combining the whole meals'];
  }else if(items.length>=2 && (has('chicken')&&has('rice'))){
    title='🍗🍚 Leftover Power Combo!';
-   message=pick(['🦝✨ Now THAT is a team-up. Let’s turn those leftovers into something new!','🦖🍗🍚 Finally, a leftover duo that understands the assignment. 😂','🦖💗 Chicken and rice? Easy win. Let’s give them a fresh adventure!']);
+   message=pick(['🦝✨ Now THAT is a team-up. Let’s turn those leftovers into something new!','🦝🍗🍚 Finally, a leftover duo that understands the assignment. 😂','🦝💗 Chicken and rice? Easy win. Let’s give them a fresh adventure!']);
    ideas=['Make a quick chicken fried-rice skillet','Turn them into a seasoned chicken-and-rice bowl with vegetables','Wrap them in tortillas with cheese and salsa for a new meal'];
  }else if(items.length>=2 && ((has('taco')||has('tacos'))&&has('rice'))){
    title='🌮🍚 Leftover Power Combo!';
-   message=pick(['🦝🌮 Taco night is getting a sequel. Let’s remix it!','🦖✨ These leftovers are ready for a taco comeback tour.','🦖🌮 I see potential. Let’s turn yesterday’s tacos into today’s new meal!']);
+   message=pick(['🦝🌮 Taco night is getting a sequel. Let’s remix it!','🦖✨ These leftovers are ready for a taco comeback tour.','🦝🌮 I see potential. Let’s turn yesterday’s tacos into today’s new meal!']);
    ideas=['Make a taco rice bowl with the taco filling and rice','Turn it into a cheesy skillet with salsa','Stuff it into a burrito or quesadilla'];
  }else if(items.length>=2 && (has('pasta','spaghetti')&&has('chicken'))){
    title='🍝🍗 Leftover Power Combo!';
-   message=pick(['🦝✨ Excellent choice. Pasta and chicken are officially going on a second adventure.','🦖🍝🍗 This duo is absolutely coming back for an encore.','🦖💗 Pasta + chicken? Yep. We can work with this!']);
+   message=pick(['🦝✨ Excellent choice. Pasta and chicken are officially going on a second adventure.','🦝🍝🍗 This duo is absolutely coming back for an encore.','🦝💗 Pasta + chicken? Yep. We can work with this!']);
    ideas=['Make a quick chicken pasta skillet','Add sauce and cheese, then bake it into a casserole','Turn it into a cold pasta salad with vegetables'];
  }else if(items.length>=2){
    title='🧪 Leftover Lab Experiment';
-   message=pick(['🦝🤢 UHHH... what is happening here?! Lil Dino is officially disgusted. 😭 Please do NOT throw all of that together. 😂','🦖🤮 Nope. Nope nope nope. Lil Dino has seen enough. This leftover combo is giving me the ick. 😂','🦖😳🤢 I... genuinely do not know what to say. Lil Dino recommends keeping these leftovers VERY far apart. 😭😂']);
+   message=pick(['🦝🤢 UHHH... what is happening here?! Juniper is officially disgusted. 😭 Please do NOT throw all of that together. 😂','🦝🤮 Nope. Nope nope nope. Juniper has seen enough. This leftover combo is giving me the ick. 😂','🦝😳🤢 I... genuinely do not know what to say. Rook recommends keeping these leftovers VERY far apart. 😭😂']);
    ideas=['Keep the leftovers separate and find one ingredient that can connect them, like cheese, rice, tortillas, or a simple sauce','Turn the more neutral leftover into the base and use the other as a topping or filling','If the flavors clash, give each leftover its own makeover instead of forcing a food friendship'];
  }else if(has('spaghetti','pasta')){
    title='🍝 Leftover Spaghetti Makeover';
@@ -334,7 +334,7 @@ function findLeftoverIdeas(){
    message='🦝💗 Rook says: Let’s give that leftover meal a second life instead of sending it straight to the trash.';
    ideas=['Turn it into a bowl, wrap, sandwich, pasta, or skillet meal','Add a fresh sauce, cheese, herbs, or vegetables to change the flavor','If you cannot use it soon, freeze it when appropriate'];
  }
- box.innerHTML='<div class="finder-result"><h3>'+title+'</h3><p><strong>You entered:</strong> '+text.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</p><p><strong>🦖 Lil Dino says:</strong> '+message.replace(/^🦖[^:]* says: /,'')+'</p><p><strong>Try this:</strong></p><ul>'+ideas.map(x=>'<li>'+x+'</li>').join('')+'</ul><p class="small"><strong>Food-safety tip:</strong> Only use leftovers that have been stored safely and still look and smell normal. If you are unsure how long they have been stored, it is safer to throw them out.</p></div>';
+ box.innerHTML='<div class="finder-result"><h3>'+title+'</h3><p><strong>You entered:</strong> '+text.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</p><p><strong>🦝 Rook says:</strong> '+message.replace(/^🦝[^:]* says: /,'')+'</p><p><strong>Try this:</strong></p><ul>'+ideas.map(x=>'<li>'+x+'</li>').join('')+'</ul><p class="small"><strong>Food-safety tip:</strong> Only use leftovers that have been stored safely and still look and smell normal. If you are unsure how long they have been stored, it is safer to throw them out.</p></div>';
 }
 function findIngredient(){
  const key=document.getElementById('ingredientSearch').value.trim().toLowerCase().replace(/\s+/g,' ');
