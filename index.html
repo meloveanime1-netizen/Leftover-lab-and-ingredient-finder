@@ -281,7 +281,7 @@ function findRecipes(){
 function findLeftoverIdeas(){
  const raw=document.getElementById('leftoverSearch').value.trim().toLowerCase();
  const box=document.getElementById('leftoverResult');
- if(!raw){box.innerHTML='<div class="finder-result"><h3>🦖♻️ Your leftover quest is waiting!</h3><p>Enter one or more leftover meals, like <strong>leftover spaghetti + leftover steak</strong>, and Lil Dino will work out the makeover.</p></div>';return;}
+ if(!raw){box.innerHTML='<div class="finder-result"><h3>🦝♻️ Your leftover quest is waiting!</h3><p>Enter one or more leftover meals, like <strong>leftover spaghetti + leftover steak</strong>, and Rook will work out the makeover.</p></div>';return;}
  const items=raw.split(/\s*(?:\+|,|\band\b)\s*/).map(x=>x.replace(/^leftover\s+/,'').trim()).filter(Boolean);
  const text=items.join(' + ');
  const pick=(arr)=>arr[Math.floor(Math.random()*arr.length)];
