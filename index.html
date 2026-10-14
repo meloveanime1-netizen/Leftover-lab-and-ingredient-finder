@@ -231,16 +231,16 @@ const recipes=[
  {name:"🧀 Niblet’s Mac & Cheese",character:"Niblet",need:["macaroni","cheddar cheese","milk","butter"]}
 ];
 const simpleIngredientSass=[
- 'You seriously searched for {ingredient}? 😭😂 What did you think this was, a treasure hunt? It’s in the grocery store. In the regular grocery store. I’m a dinosaur and even I know where it is. 🦖🙄 Go find it, adventurer. I have faith in you… unfortunately. 💗',
- 'Bestie… {ingredient}? 😭🦖 You really needed Lil Dino for THAT? It’s a basic grocery-store ingredient. Go forth and locate the dairy aisle like the brave adventurer you claim to be. 😂💗',
- 'You called in a dinosaur… for {ingredient}. 😭🦖 I have questions. It’s literally at the grocery store. Please go find it before I lose faith in humanity. 😂🙄',
- '🦖🚨 EMERGENCY QUEST: Someone needs {ingredient}. Never fear… actually, never mind. This one is ridiculously easy to find. 😂 Go to the grocery store, adventurer.',
- '{ingredient}? Seriously? 😭😂 Lil Dino has crossed mountains for rare ingredients and you summoned me for this? It’s in the regular grocery store. You’ve got this. Probably. 🦖💗',
- 'I’m a dinosaur with a backpack and even I know where to find {ingredient}. 🦖🎒😂 Please tell me you’re not making me do the whole quest for you. Go check the grocery store!',
- '🦖🙄 You want a map… to {ingredient}? A MAP?! 😂 It’s a normal grocery-store ingredient. Go use your eyes, adventurer. I believe in you. Sort of. 💗',
- 'Lil Dino has investigated the case of {ingredient}… and the answer is: the grocery store. 😭🦖 Mystery solved. You’re welcome. 😂✨',
- 'You really clicked the Ingredient Finder for {ingredient}? 😭😂 That is honestly adorable. It’s easy to find at a regular grocery store. Now go complete your tiny little quest, adventurer. 🦖💗',
- '🦖💅 Darling, {ingredient} is not a rare treasure. 😂 It’s a basic grocery item. Go find it yourself, adventurer. Lil Dino has important dinosaur business to attend to. 🙄💗'
+ 'You seriously searched for {ingredient}? 😭😂 What did you think this was, a treasure hunt? It’s in the grocery store. In the regular grocery store. I’m a dinosaur and even I know where it is. 🐇🙄 Go find it, adventurer. I have faith in you… unfortunately. 💗',
+ 'Bestie… {ingredient}? 😭🐇 You really needed Lil Dino for THAT? It’s a basic grocery-store ingredient. Go forth and locate the dairy aisle like the brave adventurer you claim to be. 😂💗',
+ 'You called in a dinosaur… for {ingredient}. 😭🐇 I have questions. It’s literally at the grocery store. Please go find it before I lose faith in humanity. 😂🙄',
+ '🐇🚨 EMERGENCY QUEST: Someone needs {ingredient}. Never fear… actually, never mind. This one is ridiculously easy to find. 😂 Go to the grocery store, adventurer.',
+ '{ingredient}? Seriously? 😭😂 Lil Dino has crossed mountains for rare ingredients and you summoned me for this? It’s in the regular grocery store. You’ve got this. Probably. 🐇💗',
+ 'I’m a dinosaur with a backpack and even I know where to find {ingredient}. 🐇🎒😂 Please tell me you’re not making me do the whole quest for you. Go check the grocery store!',
+ '🐇🙄 You want a map… to {ingredient}? A MAP?! 😂 It’s a normal grocery-store ingredient. Go use your eyes, adventurer. I believe in you. Sort of. 💗',
+ 'Lil Dino has investigated the case of {ingredient}… and the answer is: the grocery store. 😭🐇 Mystery solved. You’re welcome. 😂✨',
+ 'You really clicked the Ingredient Finder for {ingredient}? 😭😂 That is honestly adorable. It’s easy to find at a regular grocery store. Now go complete your tiny little quest, adventurer. 🐇💗',
+ '🐇💅 Darling, {ingredient} is not a rare treasure. 😂 It’s a basic grocery item. Go find it yourself, adventurer. Lil Dino has important dinosaur business to attend to. 🙄💗'
 ];
 const ingredientGuide={
  strawberries:{name:'🍓 Strawberries',places:'Produce section, farmers markets, or local fruit stands.',tips:'Look for bright red berries with fresh green tops.'},
@@ -275,7 +275,7 @@ function findRecipes(){
  }
  const scored=recipes.map(r=>({name:r.name,character:r.character,need:r.need,matched:r.need.filter(x=>have.includes(x)).length,missing:r.need.filter(x=>!have.includes(x))})).filter(r=>r.matched>0).sort((a,b)=>b.matched-a.matched);
  document.getElementById('dinoMessage').textContent=scored.some(r=>!r.missing.length)?'🎉🦖 Perfect match! Lil Dino found a recipe you can make!':'🔎🦖 Nice work! Here are your closest recipe matches!';
- document.getElementById('dinoReaction').innerHTML=scored.some(r=>!r.missing.length)?'🎉🦖 LIL DINO SAYS: Perfect match!<br><span style="font-size:15px;font-weight:600;">We found a recipe you can make!</span>':'🤔🦖 LIL DINO SAYS: We’re getting close!<br><span style="font-size:15px;font-weight:600;">Check your recipe matches below!</span>';
+ document.getElementById('dinoReaction').innerHTML=scored.some(r=>!r.missing.length)?'🎉🦖 Lil Dino SAYS: Perfect match!<br><span style="font-size:15px;font-weight:600;">We found a recipe you can make!</span>':'🤔🦖 LIL DINO SAYS: We’re getting close!<br><span style="font-size:15px;font-weight:600;">Check your recipe matches below!</span>';
  out.innerHTML="<h2>🍓 Your Recipe Matches</h2>"+scored.map(r=>"<div class='recipe "+(!r.missing.length?'perfect':'')+"'>"+(!r.missing.length?"<span class='badge'>🏆 PERFECT MATCH!</span>":"")+"<h3>"+r.name+"</h3><p class='small'><strong>🧑‍🍳 Made by: "+r.character+"</strong></p><p>"+(!r.missing.length?"🎉 You have everything you need!":"🧩 You have "+r.matched+" of "+r.need.length+" main ingredients.")+"</p><p class='small'>"+(r.missing.length?"🔎 Still needed: "+r.missing.join(", "):"✨ Ready to cook! Go, Dino, go!")+"</p></div>").join("");
 }
 function findLeftoverIdeas(){
@@ -291,47 +291,47 @@ function findLeftoverIdeas(){
  let ideas=[];
  if(items.length>=2 && has('spaghetti','pasta') && has('steak','beef')){
    title='🍝🥩 Leftover Power Combo!';
-   message=pick(['🦖💗 YES. These leftovers actually belong together. I approve this delicious team-up. 😂','🦖✨ Ohhh, this is a GOOD one. Lil Dino officially approves this leftover alliance!','🦖🍝🥩 Look at you making smart leftover decisions. This combo has serious potential!']);
+   message=pick(['🦝💗 YES. These leftovers actually belong together. I approve this delicious team-up. 😂','🦖✨ Ohhh, this is a GOOD one. Lil Dino officially approves this leftover alliance!','🦖🍝🥩 Look at you making smart leftover decisions. This combo has serious potential!']);
    ideas=['Slice the steak and toss it with the spaghetti for a hearty steak pasta','Warm everything with marinara or garlic butter and add Parmesan','Add sautéed peppers, onions, or spinach for a complete skillet meal'];
  }else if(items.length>=2 && ((has('pizza')&&has('potato soup'))||(has('pizza')&&has('soup')))){
    title='🍕🥣 Umm... About This Combo';
-   message=pick(['🦖🚨 I support leftovers. I support creativity. But pizza + potato soup? Bestie... even I have dinosaur limits. 😂','🦖😳 Okay... I have questions. Pizza and potato soup? That is a bold choice, adventurer.','🦖🙅‍♂️ Lil Dino has reviewed this combination and would like to file a polite food objection. 😂']);
+   message=pick(['🦝🚨 I support leftovers. I support creativity. But pizza + potato soup? Bestie... even I have dinosaur limits. 😂','🦖😳 Okay... I have questions. Pizza and potato soup? That is a bold choice, adventurer.','🦖🙅‍♂️ Lil Dino has reviewed this combination and would like to file a polite food objection. 😂']);
    ideas=['Keep them separate and give each one a makeover','Turn the potato soup into a creamy side and crisp the pizza in a skillet or oven','If you are feeling brave, use a small amount of the pizza toppings in the soup instead of combining the whole meals'];
  }else if(items.length>=2 && (has('chicken')&&has('rice'))){
    title='🍗🍚 Leftover Power Combo!';
-   message=pick(['🦖✨ Now THAT is a team-up. Let’s turn those leftovers into something new!','🦖🍗🍚 Finally, a leftover duo that understands the assignment. 😂','🦖💗 Chicken and rice? Easy win. Let’s give them a fresh adventure!']);
+   message=pick(['🦝✨ Now THAT is a team-up. Let’s turn those leftovers into something new!','🦖🍗🍚 Finally, a leftover duo that understands the assignment. 😂','🦖💗 Chicken and rice? Easy win. Let’s give them a fresh adventure!']);
    ideas=['Make a quick chicken fried-rice skillet','Turn them into a seasoned chicken-and-rice bowl with vegetables','Wrap them in tortillas with cheese and salsa for a new meal'];
  }else if(items.length>=2 && ((has('taco')||has('tacos'))&&has('rice'))){
    title='🌮🍚 Leftover Power Combo!';
-   message=pick(['🦖🌮 Taco night is getting a sequel. Let’s remix it!','🦖✨ These leftovers are ready for a taco comeback tour.','🦖🌮 I see potential. Let’s turn yesterday’s tacos into today’s new meal!']);
+   message=pick(['🦝🌮 Taco night is getting a sequel. Let’s remix it!','🦖✨ These leftovers are ready for a taco comeback tour.','🦖🌮 I see potential. Let’s turn yesterday’s tacos into today’s new meal!']);
    ideas=['Make a taco rice bowl with the taco filling and rice','Turn it into a cheesy skillet with salsa','Stuff it into a burrito or quesadilla'];
  }else if(items.length>=2 && (has('pasta','spaghetti')&&has('chicken'))){
    title='🍝🍗 Leftover Power Combo!';
-   message=pick(['🦖✨ Excellent choice. Pasta and chicken are officially going on a second adventure.','🦖🍝🍗 This duo is absolutely coming back for an encore.','🦖💗 Pasta + chicken? Yep. We can work with this!']);
+   message=pick(['🦝✨ Excellent choice. Pasta and chicken are officially going on a second adventure.','🦖🍝🍗 This duo is absolutely coming back for an encore.','🦖💗 Pasta + chicken? Yep. We can work with this!']);
    ideas=['Make a quick chicken pasta skillet','Add sauce and cheese, then bake it into a casserole','Turn it into a cold pasta salad with vegetables'];
  }else if(items.length>=2){
    title='🧪 Leftover Lab Experiment';
-   message=pick(['🦖🤢 UHHH... what is happening here?! Lil Dino is officially disgusted. 😭 Please do NOT throw all of that together. 😂','🦖🤮 Nope. Nope nope nope. Lil Dino has seen enough. This leftover combo is giving me the ick. 😂','🦖😳🤢 I... genuinely do not know what to say. Lil Dino recommends keeping these leftovers VERY far apart. 😭😂']);
+   message=pick(['🦝🤢 UHHH... what is happening here?! Lil Dino is officially disgusted. 😭 Please do NOT throw all of that together. 😂','🦖🤮 Nope. Nope nope nope. Lil Dino has seen enough. This leftover combo is giving me the ick. 😂','🦖😳🤢 I... genuinely do not know what to say. Lil Dino recommends keeping these leftovers VERY far apart. 😭😂']);
    ideas=['Keep the leftovers separate and find one ingredient that can connect them, like cheese, rice, tortillas, or a simple sauce','Turn the more neutral leftover into the base and use the other as a topping or filling','If the flavors clash, give each leftover its own makeover instead of forcing a food friendship'];
  }else if(has('spaghetti','pasta')){
    title='🍝 Leftover Spaghetti Makeover';
-   message='🦖😂 Lil Dino says: We already had spaghetti yesterday. We are NOT serving the exact same plate again. Give it a glow-up!';
+   message='🦝😂 Rook says: We already had spaghetti yesterday. We are NOT serving the exact same plate again. Give it a glow-up!';
    ideas=['Bake it with cheese for a crispy pasta casserole','Make a spaghetti frittata with eggs and Parmesan','Toss it with vegetables, garlic butter, or a new sauce for a different flavor'];
  }else if(has('soup')){
    title='🥣 Leftover Soup Makeover';
-   message='🦖🥄 Lil Dino says: Soup deserves a sequel. Let’s make it feel like a completely different meal!';
+   message='🦝🥄 Rook says: Soup deserves a sequel. Let’s make it feel like a completely different meal!';
    ideas=['Add cooked pasta, rice, beans, or vegetables to change the texture','Use it as a sauce or base for a new bowl','Add fresh herbs, cheese, croutons, or a new topping for a quick upgrade'];
  }else if(has('pizza')){
    title='🍕 Leftover Pizza Makeover';
-   message='🦖🍕 Lil Dino says: Cold pizza is fine... but we can do better. 😂';
+   message='🦝🍕 Rook says: Cold pizza is fine... but we can do better. 😂';
    ideas=['Crisp it in a skillet or air fryer and add a fresh salad','Chop the toppings into scrambled eggs or an omelet','Turn the slices into a crispy pizza sandwich or wrap'];
  }else if(has('chicken')){
    title='🍗 Leftover Chicken Makeover';
-   message='🦖✨ Lil Dino says: That chicken has another adventure in it!';
+   message='🦝✨ Rook says: That chicken has another adventure in it!';
    ideas=['Turn it into tacos, wraps, or sandwiches','Add it to pasta, rice, or a salad','Make a quick soup or quesadilla'];
  }else{
    title='♻️ Leftover Makeover';
-   message='🦖💗 Lil Dino says: Let’s give that leftover meal a second life instead of sending it straight to the trash.';
+   message='🦝💗 Rook says: Let’s give that leftover meal a second life instead of sending it straight to the trash.';
    ideas=['Turn it into a bowl, wrap, sandwich, pasta, or skillet meal','Add a fresh sauce, cheese, herbs, or vegetables to change the flavor','If you cannot use it soon, freeze it when appropriate'];
  }
  box.innerHTML='<div class="finder-result"><h3>'+title+'</h3><p><strong>You entered:</strong> '+text.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</p><p><strong>🦖 Lil Dino says:</strong> '+message.replace(/^🦖[^:]* says: /,'')+'</p><p><strong>Try this:</strong></p><ul>'+ideas.map(x=>'<li>'+x+'</li>').join('')+'</ul><p class="small"><strong>Food-safety tip:</strong> Only use leftovers that have been stored safely and still look and smell normal. If you are unsure how long they have been stored, it is safer to throw them out.</p></div>';
@@ -341,7 +341,7 @@ function findIngredient(){
  const box=document.getElementById('ingredientResult');
  if(!key){box.innerHTML='<div class="finder-result"><h3>🦖 Your ingredient quest is waiting!</h3><p>Type an ingredient above and Lil Dino will give you some ideas for where to look.</p></div>';return;}
  const guide=ingredientGuide[key];
- if(guide){const q=encodeURIComponent(key);const productName={strawberries:'Fresh Strawberries',flour:'All-Purpose Flour',eggs:'Large Eggs',milk:'Whole Milk',butter:'Unsalted Butter','chocolate chips':'Semi-Sweet Chocolate Chips',bread:'French Bread',spaghetti:'Spaghetti Pasta',marinara:'Marinara Sauce',lemon:'Fresh Lemons','dragon fruit':'Fresh Dragon Fruit','oyster sauce':'Oyster Sauce','lemongrass':'Fresh Lemongrass','lemon grass':'Fresh Lemongrass'}[key]||guide.name.replace(/^\S+\s/,'');const hardToFindNote=guide.hardToFind?'<p><strong>⭐ Harder-to-find ingredient:</strong> Lil Dino will help you shop for this one online or find a specialty store nearby!</p>':'';if(!guide.hardToFind){const sass=simpleIngredientSass[Math.floor(Math.random()*simpleIngredientSass.length)].replaceAll('{ingredient}',guide.name.replace(/^\S+\s/,''));box.innerHTML='<div class="finder-result"><h3>'+guide.name+'</h3><p><strong>🦖 Lil Dino says:</strong> '+sass+'</p><p><strong>🛒 Where to look:</strong> '+guide.places+'</p><p><strong>🦖 Dino tip:</strong> '+guide.tips+'</p></div>';return;}box.innerHTML='<div class="finder-result"><h3>'+guide.name+'</h3><p><strong>🛒 Where to look:</strong> '+guide.places+'</p><p><strong>🦖 Dino tip:</strong> '+guide.tips+'</p>'+hardToFindNote+'<p><strong>🛍️ Dino found this:</strong></p><div class="shop-card"><h4>✨ '+productName+'</h4><p>🛒 A specific shopping choice for your recipe adventure.</p><div class="shop-links"><a href="https://www.walmart.com/search?q='+encodeURIComponent(productName)+'" target="_blank" rel="noopener" style="background:#6FAF45;">🛒 Walmart</a><a href="https://www.amazon.com/s?k='+encodeURIComponent(productName)+'" target="_blank" rel="noopener" style="background:#F28BA8;">📦 Amazon</a></div></div></div>';return;}
+ if(guide){const q=encodeURIComponent(key);const productName={strawberries:'Fresh Strawberries',flour:'All-Purpose Flour',eggs:'Large Eggs',milk:'Whole Milk',butter:'Unsalted Butter','chocolate chips':'Semi-Sweet Chocolate Chips',bread:'French Bread',spaghetti:'Spaghetti Pasta',marinara:'Marinara Sauce',lemon:'Fresh Lemons','dragon fruit':'Fresh Dragon Fruit','oyster sauce':'Oyster Sauce','lemongrass':'Fresh Lemongrass','lemon grass':'Fresh Lemongrass'}[key]||guide.name.replace(/^\S+\s/,'');const hardToFindNote=guide.hardToFind?'<p><strong>⭐ Harder-to-find ingredient:</strong> Juniper will help you shop for this one online or find a specialty store nearby!</p>':'';if(!guide.hardToFind){const sass=simpleIngredientSass[Math.floor(Math.random()*simpleIngredientSass.length)].replaceAll('{ingredient}',guide.name.replace(/^\S+\s/,''));box.innerHTML='<div class="finder-result"><h3>'+guide.name+'</h3><p><strong>🐇 Juniper says:</strong> '+sass+'</p><p><strong>🛒 Where to look:</strong> '+guide.places+'</p><p><strong>🐇 Juniper tip:</strong> '+guide.tips+'</p></div>';return;}box.innerHTML='<div class="finder-result"><h3>'+guide.name+'</h3><p><strong>🛒 Where to look:</strong> '+guide.places+'</p><p><strong>🐇 juniper tip:</strong> '+guide.tips+'</p>'+hardToFindNote+'<p><strong>🛍️ Juniper found this:</strong></p><div class="shop-card"><h4>✨ '+productName+'</h4><p>🛒 A specific shopping choice for your recipe adventure.</p><div class="shop-links"><a href="https://www.walmart.com/search?q='+encodeURIComponent(productName)+'" target="_blank" rel="noopener" style="background:#6FAF45;">🛒 Walmart</a><a href="https://www.amazon.com/s?k='+encodeURIComponent(productName)+'" target="_blank" rel="noopener" style="background:#F28BA8;">📦 Amazon</a></div></div></div>';return;}
  const q=encodeURIComponent(key);box.innerHTML='<div class="finder-result"><h3>🔎 Lil Dino is on the hunt!</h3><p>I don’t have a guide for <strong>'+key.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</strong> yet.</p><p>Try the produce section, baking aisle, refrigerated section, pasta aisle, farmers market, or specialty market.</p><p><strong>🛍️ Shop online:</strong></p><div style="display:grid;gap:8px;"><a href="https://www.walmart.com/search?q='+q+'" target="_blank" rel="noopener" style="display:block;background:#6FAF45;color:white;text-align:center;text-decoration:none;border-radius:16px;padding:12px;font-weight:800;">🛒 Find on Walmart</a><a href="https://www.amazon.com/s?k='+q+'" target="_blank" rel="noopener" style="display:block;background:#F28BA8;color:white;text-align:center;text-decoration:none;border-radius:16px;padding:12px;font-weight:800;">📦 Find on Amazon</a></div></div>';
 }
 function findNearbyStores(event){
@@ -349,11 +349,11 @@ function findNearbyStores(event){
  const ingredient=document.getElementById('ingredientSearch').value.trim();
  const location=document.getElementById('ingredientLocation').value.trim();
  const box=document.getElementById('ingredientResult');
- if(!ingredient){box.innerHTML='<div class="finder-result"><h3>🦖 Pick an ingredient first!</h3><p>Type the ingredient you need above, then enter your ZIP code or city.</p></div>';return;}
- if(!location){box.innerHTML='<div class="finder-result"><h3>📍 Where should Lil Dino search?</h3><p>Enter your ZIP code or city so we can look for nearby stores.</p></div>';return;}
+ if(!ingredient){box.innerHTML='<div class="finder-result"><h3>🐇 Pick an ingredient first!</h3><p>Type the ingredient you need above, then enter your ZIP code or city.</p></div>';return;}
+ if(!location){box.innerHTML='<div class="finder-result"><h3>📍 Where should Juniper search?</h3><p>Enter your ZIP code or city so we can look for nearby stores.</p></div>';return;}
  const query=encodeURIComponent('grocery stores that sell '+ingredient+' near '+location);
  const mapUrl='https://www.google.com/maps/search/'+query;
- box.innerHTML='<div class="finder-result"><h3>🗺️ Map search ready!</h3><p>Lil Dino found a map search for <strong>'+ingredient.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</strong> near <strong>'+location.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</strong>. 🦖🛒</p><p style="margin-top:14px;"><a href="'+mapUrl+'" style="display:inline-block;background:#F28BA8;color:white;text-align:center;text-decoration:none;border-radius:18px;padding:14px 20px;font-size:17px;font-weight:700;">📍 Open Store Map</a></p><p class="small">If the preview blocks the map, tap and hold the button and choose to open the link in your browser.</p></div>';
+ box.innerHTML='<div class="finder-result"><h3>🗺️ Map search ready!</h3><p>Juniper found a map search for <strong>'+ingredient.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</strong> near <strong>'+location.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</strong>. 🐇🛒</p><p style="margin-top:14px;"><a href="'+mapUrl+'" style="display:inline-block;background:#F28BA8;color:white;text-align:center;text-decoration:none;border-radius:18px;padding:14px 20px;font-size:17px;font-weight:700;">📍 Open Store Map</a></p><p class="small">If the preview blocks the map, tap and hold the button and choose to open the link in your browser.</p></div>';
 }
 </script>
 
